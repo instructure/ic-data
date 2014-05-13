@@ -2,19 +2,43 @@ var http = require('http');
 var httpProxy = require('http-proxy');
 var path = require('path');
 
-try {
-  var token = require(path.resolve('proxy-config.json')).token;
-} catch (e) {
-  console.log('Please create a proxy-config.json file and add your token to it.');
-  process.exit();
+main();
+
+function main() {
+  var config = readConfig();
+  validate(config);
+  createServer(config);
 }
 
-var proxy = httpProxy.createProxyServer({});
-var server = require('http').createServer(function(req, res) {
-  req.headers['Authorization'] = 'Bearer '+token;
-  proxy.web(req, res, { target: 'https://canvas.instructure.com' });
-});
+function createServer(config) {
+  var proxy = httpProxy.createProxyServer({});
+  var server = require('http').createServer(function(req, res) {
+    req.headers['Authorization'] = 'Bearer '+config.token;
+    proxy.web(req, res, { target: config.host });
+  });
+  console.log("Canvas proxy server listening on port "+config.port)
+  server.listen(config.port);
+}
 
-console.log("Canvas proxy server listening on port 8080")
-server.listen(8080);
+function readConfig() {
+  try {
+    var config = require(path.resolve('proxy-config.json'));
+    config.port = config.port || 8080;
+  } catch (e) {
+    console.log('Please create a proxy-config.json');
+    process.exit();
+  }
+  return config;
+}
+
+function validate(config) {
+  if (!config.token) {
+    console.log('Please add a "token" to proxy-config.json');
+    process.exit();
+  }
+  if (!config.host) {
+    console.log('Please add a "host" to proxy-config.json');
+    process.exit();
+  }
+}
 

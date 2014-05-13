@@ -5,8 +5,11 @@ Proxy Server
 ------------
 
 This repository includes a proxy server to the canvas API for testing
-and development. No API stubbing here, we want to know it actually
-works.
+and development, it sets the access token for you automatically so
+requests don't need contain the query parameter.
+
+No API stubbing here, we want to know it really works, and potentially
+run the tests here whenever apis in canvas change.
 
 1. Log into canvas, and create an API token from the user settings page,
    then paste it into `proxy-config.json`.

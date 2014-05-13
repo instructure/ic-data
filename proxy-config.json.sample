@@ -1,4 +1,6 @@
 {
-  "token": "<your token here>"
+  "token": "<your token here>",
+  "host": "https://canvas.beta.instructure.com",
+  "port": 8080
 }
 
