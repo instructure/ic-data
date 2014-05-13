@@ -12,10 +12,6 @@ var registry = {
   'adapter:course': ic.data.CourseAdapter
 };
 
-function registerUnit(fullName, Klass) {
-  registry[fullName] = Klass
-}
-
 setResolver(Ember.DefaultResolver.extend({
   resolve: function(fullName) {
     return registry[fullName] || this._super.apply(this, arguments);

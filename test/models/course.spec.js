@@ -5,20 +5,15 @@ moduleForModel('course', 'Course', {
   ]
 });
 
-test('it finds things', function() {
-  var store = this.store();
-  ok(store, 'got a store');
-  var model = this.subject();
-  ok(model, 'got a model');
-});
-
 test('find all courses', function() {
-  expect(1);
+  expect(3);
   var store = this.store();
   stop();
-  store.find('course').then(function(res) {
+  store.find('course').then(function(courses) {
     start();
-    ok(res);
+    ok(courses, 'got courses');
+    equal(courses.get('length'), 1, 'we have one course');
+    equal(courses.objectAt(0).get('name'), 'ic-data-testing');
   });
 });
 
