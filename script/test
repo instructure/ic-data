@@ -2,5 +2,7 @@
 echo "# running script/test"
 script/build
 node_modules/.bin/bower install
+node proxy.js &
 node_modules/.bin/testem ci
+kill %1
 
