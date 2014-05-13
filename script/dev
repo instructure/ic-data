@@ -1,8 +1,10 @@
 #!/bin/sh
 echo "# running script/dev"
-script/build
 node_modules/.bin/bower install
+rm -rf dist
+broccoli serve &
 node proxy.js &
 node_modules/.bin/testem
 kill %1
+kill %2
 

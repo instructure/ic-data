@@ -13,8 +13,15 @@ function main() {
 function createServer(config) {
   var proxy = httpProxy.createProxyServer({});
   var server = require('http').createServer(function(req, res) {
-    req.headers['Authorization'] = 'Bearer '+config.token;
-    proxy.web(req, res, { target: config.host });
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    } else {
+      req.headers['Authorization'] = 'Bearer '+config.token;
+      proxy.web(req, res, { target: config.host });
+    }
   });
   console.log("Canvas proxy server listening on port "+config.port)
   server.listen(config.port);
