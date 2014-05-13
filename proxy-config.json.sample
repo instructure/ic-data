@@ -1,6 +1,6 @@
 {
   "token": "<your token here>",
-  "host": "https://canvas.beta.instructure.com",
+  "host": "http://localhost:3000",
   "port": 8080
 }
 
