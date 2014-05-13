@@ -1,0 +1,24 @@
+{
+  "name": "ic-data",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/instructure/ic-data.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/instructure/ic-data/issues"
+  },
+  "homepage": "https://github.com/instructure/ic-data",
+  "devDependencies": {
+    "broccoli-cli": "0.0.1",
+    "broccoli": "^0.12.0",
+    "broccoli-dist-es6-module": "^0.2.0"
+  }
+}

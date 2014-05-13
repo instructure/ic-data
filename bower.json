@@ -1,0 +1,20 @@
+{
+  "name": "ic-data",
+  "version": "0.0.0",
+  "homepage": "https://github.com/instructure/ic-data",
+  "authors": [
+    "Ryan Florence <rpflorence@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "~1.5.1",
+    "ember-data": "~0.0.14"
+  }
+}
