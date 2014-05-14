@@ -3,3 +3,4 @@ dist
 node_modules
 proxy-config.json
 tmp
+test-config.js

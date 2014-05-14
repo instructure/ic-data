@@ -10,7 +10,7 @@ test('create and delete a module', function() {
   var store = this.store();
   var model = this.subject({
     name: 'test module',
-    course_id: ENV.courseId
+    courseId: ENV.courseId
   });
   stop();
   Ember.run(function() {
@@ -34,10 +34,10 @@ test('finds all modules for a course', function() {
   var store = this.store();
   stop();
   store.findQuery('module', {
-    course_id: ENV.courseId
-  }).then(function(courses) {
+    courseId: ENV.courseId
+  }).then(function(modules) {
     start();
-    ok(courses, 'got courses');
+    ok(modules, 'got modules');
   });
 });
 

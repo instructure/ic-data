@@ -2,7 +2,7 @@
 echo "# running script/dev"
 node_modules/.bin/bower install
 rm -rf dist
-broccoli serve &
+node_modules/.bin/broccoli serve &
 node proxy.js &
 node_modules/.bin/testem
 kill %1
