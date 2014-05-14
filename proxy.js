@@ -15,7 +15,8 @@ function createServer(config) {
   var server = require('http').createServer(function(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Expose-Headers', 'link');
     if ('OPTIONS' == req.method) {
       res.writeHead(200);
       res.end();
