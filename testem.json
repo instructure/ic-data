@@ -9,6 +9,7 @@
     "bower_components/ember-qunit/dist/globals/main.js",
     "dist/globals/main.js",
     "http://localhost:4200/globals/main.js",
+    "test-config.js",
     "test/support/setup.js",
     "test/**/*.spec.js"
   ]

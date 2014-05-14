@@ -1,7 +1,6 @@
 moduleForModel('course', 'Course', {
   needs: [
-    'adapter:application',
-    //'adapter:course'
+    'adapter:course'
   ]
 });
 

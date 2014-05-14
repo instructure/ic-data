@@ -1,13 +1,11 @@
 emq.globalize();
 
-var ApplicationAdapter = DS.RESTAdapter.extend({
-  host: 'http://localhost:8080',
-  namespace: 'api/v1'
+ic.data.BaseAdapter.reopen({
+  host: ENV.proxyHost
 });
 
 var registry = {
-  'adapter:application': ApplicationAdapter,
-  'adapter:classic': ic.data.ClassicAdapter,
+  'adapter:base': ic.data.BaseAdapter,
   'model:course': ic.data.Course,
   'adapter:course': ic.data.CourseAdapter
 };
