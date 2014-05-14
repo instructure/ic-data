@@ -5,8 +5,10 @@ moduleForModel('course', 'Course', {
   ]
 });
 
-test('create a course', function() {
-  var record = this.subject({account_id: ENV.accountId});
+test('create and delete a course', function() {
+  var record = this.subject({
+    account_id: ENV.accountId
+  });
   ok(record);
   stop();
   Ember.run(function() {

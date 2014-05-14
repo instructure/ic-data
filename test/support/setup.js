@@ -12,8 +12,10 @@ var registry = {
   'adapter:course': ic.data.CourseAdapter,
   'serializer:course': ic.data.CourseSerializer,
 
+
   'model:module': ic.data.Module,
-  'adapter:module': ic.data.ModuleAdapter
+  'adapter:module': ic.data.ModuleAdapter,
+  'serializer:module': ic.data.ModuleSerializer,
 };
 
 setResolver(Ember.DefaultResolver.extend({
