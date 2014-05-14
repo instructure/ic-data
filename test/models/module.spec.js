@@ -63,3 +63,33 @@ test('pagination for module works', function() {
     equal(newModules.get('length'), 1, 'first page has 1 module');
   });
 });
+
+
+test('pagination works for multiple lists at once', function() {
+  expect(3);
+  var store = this.store();
+  stop();
+  store.findQuery('module', {
+    courseId: ENV.courseId,
+    per_page: 2
+  }).then(function(modules) {
+    start();
+    equal(modules.get('length'),2, 'first page for 1st course has 2 modules');
+    stop();
+    store.findQuery('module', {
+      courseId: ENV.course2Id,
+      per_page:2
+    }).then(function(newModules){
+      start();
+      equal(newModules.get('length'), 2, 'first for 2nd course has 2 modules');
+      var nextUrl = modules.get('meta.next');
+      stop();
+      store.findQuery('module', {
+        url: nextUrl
+      }).then(function(finalList){
+        start();
+        equal(finalList.get('length'), 1, '2nd page for 1st course has 1 module');
+      });
+    });
+  });
+});
