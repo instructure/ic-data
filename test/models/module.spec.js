@@ -29,3 +29,16 @@ test('create and delete a module', function() {
   });
 });
 
+test('finds all modules for a course', function() {
+  expect(1);
+  var store = this.store();
+  stop();
+  store.findQuery('module', {
+    course_id: ENV.courseId
+  }).then(function(courses) {
+    start();
+    ok(courses, 'got courses');
+  });
+});
+
+
