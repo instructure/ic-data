@@ -1,18 +1,35 @@
 moduleForModel('course', 'Course', {
   needs: [
-    'adapter:course'
+    'adapter:course',
+    'serializer:course'
   ]
 });
 
+test('create a course', function() {
+  var record = this.subject({account_id: ENV.accountId});
+  ok(record);
+  stop();
+  Ember.run(function() {
+    record.save().then(function(result) {
+      start();
+      ok(result);
+      stop();
+      Ember.run(function() {
+        record.destroyRecord().then(function() {
+          start();
+        });
+      });
+    });
+  });
+});
+
 test('find all courses', function() {
-  expect(3);
+  expect(1);
   var store = this.store();
   stop();
   store.find('course').then(function(courses) {
     start();
     ok(courses, 'got courses');
-    equal(courses.get('length'), 1, 'we have one course');
-    equal(courses.objectAt(0).get('name'), 'ic-data-testing');
   });
 });
 

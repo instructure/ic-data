@@ -17,7 +17,8 @@ function createServer(config) {
     res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
     if ('OPTIONS' == req.method) {
-      res.send(200);
+      res.writeHead(200);
+      res.end();
     } else {
       req.headers['Authorization'] = 'Bearer '+config.token;
       proxy.web(req, res, { target: config.host });
