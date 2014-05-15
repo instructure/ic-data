@@ -38,3 +38,25 @@ test('gets a module and its moduleItems', function() {
   });
 });
 
+test('moduleItems pagination works', function() {
+  var serializer = this.container.lookup('serializer:module');
+  var oldNormalize = serializer.normalize;
+  serializer.normalize = function(type, hash, prop){
+    if (hash.items_url.indexOf('per_page') === -1){
+      hash.items_url = hash.items_url + '?per_page=2';
+    }
+    return oldNormalize.call(this, type, hash, prop);
+  };
+  expect(3);
+  var store = this.store();
+  stop();
+  Ember.run(function(){
+    store.find('module', ENV.moduleId, {courseId: ENV.course2Id }).then(function(module) {
+      module.get('items').then(function(items){
+        start();
+        equal(items.get('length'), 2);
+        equal(items.get('meta.next'), "https://localhost/api/v1/courses/855957/modules/728972/items?page=2&per_page=2");
+      });
+    });
+  });
+});
