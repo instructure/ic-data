@@ -21,7 +21,7 @@ test('find all moduleItems', function() {
 
 
 test('gets a module and its moduleItems', function() {
-  expect(2);
+  expect(3);
   var store = this.store();
   stop();
   Ember.run(function(){
@@ -29,6 +29,11 @@ test('gets a module and its moduleItems', function() {
       start();
       ok(module, 'got module');
       equal(module.get('course_id'), ENV.course2Id);
+      stop();
+      module.get('items').then(function(items){
+        start();
+        equal(items.get('length'), 3);
+      });
     });
   });
 });
