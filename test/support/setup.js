@@ -16,6 +16,10 @@ var registry = {
   'model:module': ic.data.Module,
   'adapter:module': ic.data.ModuleAdapter,
   'serializer:module': ic.data.ModuleSerializer,
+
+  'model:moduleItem': ic.data.ModuleItem,
+  'adapter:moduleItem': ic.data.ModuleItemAdapter,
+  'serializer:moduleItem': ic.data.ModuleItemSerializer,
 };
 
 setResolver(Ember.DefaultResolver.extend({
