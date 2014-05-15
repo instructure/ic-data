@@ -55,7 +55,12 @@ test('moduleItems pagination works', function() {
       module.get('items').then(function(items){
         start();
         equal(items.get('length'), 2);
-        equal(items.get('meta.next'), "https://localhost/api/v1/courses/855957/modules/728972/items?page=2&per_page=2");
+        equal(items.get('meta.next'), "http://localhost:8080/api/v1/courses/855957/modules/728972/items?page=2&per_page=2");
+        stop();
+        items.getNextPage().then(function(moreItems){
+          start();
+          equal(moreItems.get('length'), 3);
+        });
       });
     });
   });
