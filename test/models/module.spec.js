@@ -10,7 +10,7 @@ test('create and delete a module', function() {
   var store = this.store();
   var model = this.subject({
     name: 'test module',
-    courseId: ENV.courseId
+    course_id: ENV.courseId
   });
   stop();
   Ember.run(function() {
