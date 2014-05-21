@@ -42,12 +42,15 @@ test('can access the root folder of a course', function() {
   });
 });
 
-test('can find a folder by itself', function() {
+test('can find a folder by itself as a root', function() {
   expect(1);
   var store = this.store();
   stop();
-  store.findQuery('folder', {courseId: ENV.courseId, root:true}).then(function(folder) {
-    start();
-    ok(folder, 'got folder');
+  //https://github.com/emberjs/data/pull/1831 to deal with zombie records that are gonna be left around
+  Ember.run(function(){
+    store.find('folder', Math.random(), {courseId: ENV.courseId, isRoot:true}).then(function(folder) {
+      start();
+      ok(folder, 'got folder');
+    });
   });
 });
