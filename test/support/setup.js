@@ -20,6 +20,14 @@ var registry = {
   'model:moduleItem': ic.data.ModuleItem,
   'adapter:moduleItem': ic.data.ModuleItemAdapter,
   'serializer:moduleItem': ic.data.ModuleItemSerializer,
+
+  'model:file': ic.data.File,
+  'adapter:file': ic.data.FileAdapter,
+  'serializer:file': ic.data.FileSerializer,
+
+  'model:folder': ic.data.Folder,
+  'adapter:folder': ic.data.FolderAdapter,
+  'serializer:folder': ic.data.FolderSerializer
 };
 
 setResolver(Ember.DefaultResolver.extend({
