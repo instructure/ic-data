@@ -42,3 +42,12 @@ test('can access the root folder of a course', function() {
   });
 });
 
+test('can find a folder by itself', function() {
+  expect(1);
+  var store = this.store();
+  stop();
+  store.findQuery('folder', {courseId: ENV.courseId, root:true}).then(function(folder) {
+    start();
+    ok(folder, 'got folder');
+  });
+});
