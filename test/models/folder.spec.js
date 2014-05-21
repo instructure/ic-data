@@ -54,3 +54,18 @@ test('can find a folder by itself as a root', function() {
     });
   });
 });
+
+test('can find child folders from a root folder', function() {
+  expect(1);
+  var store = this.store();
+  stop();
+  //https://github.com/emberjs/data/pull/1831 to deal with zombie records that are gonna be left around
+  Ember.run(function(){
+    store.find('folder', Math.random(), {courseId: ENV.courseId, isRoot:true}).then(function(folder) {
+      folder.get('folders').then(function(folders){
+        start();
+        equal(folders.get('length'), 3, 'succesfully accessed child folders');
+      });
+    });
+  });
+});
