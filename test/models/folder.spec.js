@@ -69,3 +69,17 @@ test('can find child folders from a root folder', function() {
     });
   });
 });
+
+test('the folder path access works', function() {
+  var path = "course files/folder 1";
+  expect(1);
+  var store = this.store();
+  stop();
+  //https://github.com/emberjs/data/pull/1831 to deal with zombie records that are gonna be left around
+  Ember.run(function(){
+    store.findQuery('folder', {fullName: path, courseId:ENV.courseId }).then(function(folders) {
+      start();
+      equal(folders.get('lastObject').get('name'), 'folder 1', 'folder succesfully retrieved');
+    });
+  });
+});
