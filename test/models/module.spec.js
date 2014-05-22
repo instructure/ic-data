@@ -1,7 +1,10 @@
 moduleForModel('module', 'Module', {
   needs: [
     'serializer:module',
-    'adapter:module'
+    'adapter:module',
+    'adapter:moduleItem',
+    'serializer:moduleItem',
+    'model:moduleItem',
   ]
 });
 

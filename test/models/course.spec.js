@@ -1,7 +1,8 @@
 moduleForModel('course', 'Course', {
   needs: [
     'adapter:course',
-    'serializer:course'
+    'serializer:course',
+    'model:folder',
   ]
 });
 /*
