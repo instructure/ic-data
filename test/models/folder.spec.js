@@ -54,7 +54,6 @@ test('can find a folder by itself as a root', function() {
     });
   });
 });
-
 test('can find child folders from a root folder', function() {
   expect(1);
   var store = this.store();
